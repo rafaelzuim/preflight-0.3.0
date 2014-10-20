@@ -15,12 +15,13 @@ module Preflight
       rule Preflight::Rules::CompressionAlgorithms, :ASCII85Decode, :CCITTFaxDecode, :DCTDecode, :FlateDecode, :RunLengthDecode
       rule Preflight::Rules::DocumentId
       rule Preflight::Rules::NoFilespecs
-      rule Preflight::Rules::NoTransparency
       rule Preflight::Rules::OnlyEmbeddedFonts
       rule Preflight::Rules::BoxNesting
       rule Preflight::Rules::PrintBoxes
       rule Preflight::Rules::OutputIntentForPdfx
       rule Preflight::Rules::PdfxOutputIntentHasKeys, :OutputConditionIdentifier, :Info
+      #Valida utilização de transparência
+      rule Preflight::Rules::NoTransparency
       #Valida cores carregadas
       rule Preflight::Rules::MaxInkDensity, 250
       #Valida presença de RGB
