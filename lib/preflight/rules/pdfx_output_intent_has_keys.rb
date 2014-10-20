@@ -32,7 +32,7 @@ module Preflight
 
         missing = @keys - oi.keys
         missing.map { |key|
-          Issue.new("The GTS_PDFX OutputIntent missing required key #{key}", self, :key => key)
+          Issue.new("Arquivo sem informações GTS_PDFX", self, :key => key)
         }
       end
 

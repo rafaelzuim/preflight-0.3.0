@@ -26,12 +26,12 @@ module Preflight
         
         @matches.each do |key, regexp|                  
           
-          @cleanStr =  info[key].to_s.gsub(/[\x00|\xFE|\xFF]/,'')
+          @cleanStr =  info[key].gsub(/[\x00|\xFE|\xFF]/,'').to_s
 
-          if !info.has_key?(key)            
-            array << Issue.new("Info dict missing required key", self, :key => key)
+          if !info.has_key?(key)
+            array << Issue.new("Arquivo precisa ser PDF-X1A", self, :key => key)
           elsif !@cleanStr.match(regexp)
-            array << Issue.new("value of Info #{@algo} entry #{key} doesn't match #{regexp}", self, :key    => key,
+            array << Issue.new("Arquivo precisa ser PDF-X1A", self, :key    => key,
                                                                                            :regexp => regexp,
                                                                                            :algo   => @cleanStr)
           end

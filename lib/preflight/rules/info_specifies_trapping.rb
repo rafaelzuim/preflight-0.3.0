@@ -21,9 +21,9 @@ module Preflight
         info = ohash.object(ohash.trailer[:Info])
 
         if !info.has_key?(:Trapped)
-          [ Issue.new("Info dict does not specify Trapped", self) ]
+          [ Issue.new("Arquivo sem dicionário de dados PDF", self) ]
         elsif info[:Trapped] != :True && info[:Trapped] != :False
-          [ Issue.new("Trapped value of Info dict must be True or False", self) ]
+          [ Issue.new("Arquivo sem dicionário de dados PDF", self) ]
         else
           []
         end

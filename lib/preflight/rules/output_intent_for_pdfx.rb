@@ -23,7 +23,7 @@ module Preflight
         }
 
         if intents.size != 1
-          [Issue.new("There must be exactly 1 OutputIntent with a subtype of GTS_PDFX", self)]
+          [Issue.new("Erro output GTS_PDFX", self)]
         else
           []
         end

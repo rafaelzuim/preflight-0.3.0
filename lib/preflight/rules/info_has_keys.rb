@@ -26,7 +26,7 @@ module Preflight
         info = ohash.object(ohash.trailer[:Info])
         missing = @keys - info.keys
         missing.map { |key|
-          Issue.new("Info dict missing required key", self, :key => key)
+          Issue.new("PDF sem tabela de informações", self, :key => key)
         }
       end
     end
