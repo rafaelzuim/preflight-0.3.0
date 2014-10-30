@@ -47,7 +47,7 @@ module Preflight
           box_width  = dict[@box][2] - dict[@box][0]
 
           if !@width.include?(box_width)
-            @issues << Issue.new("#{@box} deve ter o comprimento de #{@orig_width}#{@units}", self, :page  => page.number,
+            @issues << Issue.new("O arquivo deve ter o comprimento de #{@orig_width}#{@units}", self, :page  => page.number,
                                                                                         :box   => @box,
                                                                                         :width => @orig_width,
                                                                                         :units => @units)
@@ -62,7 +62,7 @@ module Preflight
         when Numeric then Range.new(in2pt(width)-1, in2pt(width)+1)
         when Range   then Range.new(in2pt(width.min), in2pt(width.max))
         else
-          raise ArgumentError, "width must be a Numeric or Range object"
+          raise ArgumentError, "O comprimento precisa ser um valor numérico"
         end
       end
 
@@ -71,7 +71,7 @@ module Preflight
         when Numeric then Range.new(mm2pt(width)-1, mm2pt(width)+1)
         when Range   then Range.new(mm2pt(width.min), mm2pt(width.max))
         else
-          raise ArgumentError, "width must be a Numeric or Range object"
+          raise ArgumentError, "O comprimento precisa ser um valor numérico"
         end
       end
 
@@ -80,7 +80,7 @@ module Preflight
         when Numeric then Range.new(width, width)
         when Range   then width
         else
-          raise ArgumentError, "width must be a Numeric or Range object"
+          raise ArgumentError, "O comprimento precisa ser um valor numérico"
         end
       end
     end

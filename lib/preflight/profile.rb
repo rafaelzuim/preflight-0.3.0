@@ -37,11 +37,12 @@ module Preflight
 
     module InstanceMethods
       def check(input)
+
         valid_rules?
 
-        if File.file?(input)
+        if File.file?(input)          
           check_filename(input)
-        elsif input.is_a?(IO)
+        elsif input.is_a?(IO)          
           check_io(input)
         else
           raise ArgumentError, "input must be a string with a filename or an IO object"
@@ -90,7 +91,8 @@ module Preflight
         issues    = []
 
         begin
-          reader.pages.each do |page|
+
+          reader.pages.each do |page|            
             page.walk(*rules_array)
             issues += rules_array.map(&:issues).flatten.compact
           end
@@ -99,6 +101,7 @@ module Preflight
         end
         issues
       end
+
 
       # ensure all rules follow the prescribed API
       #

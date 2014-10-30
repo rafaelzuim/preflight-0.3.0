@@ -21,7 +21,7 @@ module Preflight
       end
 
       def check_hash(ohash)
-        array = []        
+        array = []
         info = ohash.object(ohash.trailer[:Info])        
         
         @matches.each do |key, regexp|                  

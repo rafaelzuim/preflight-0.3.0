@@ -47,7 +47,7 @@ module Preflight
           box_height  = dict[@box][3] - dict[@box][1]
 
           if !@height.include?(box_height)
-            @issues << Issue.new("#{@box} deve ter a altura de #{@orig_height}#{@units}", self, :page   => page.number,
+            @issues << Issue.new("O arquivo deve ter a altura de #{@orig_height}#{@units}", self, :page   => page.number,
                                                                                           :box    => @box,
                                                                                           :height => @orig_height,
                                                                                           :units  => @units)
@@ -62,7 +62,7 @@ module Preflight
         when Numeric then Range.new(in2pt(height)-1, in2pt(height)+1)
         when Range   then Range.new(in2pt(height.min), in2pt(height.max))
         else
-          raise ArgumentError, "height must be a Numeric or Range object"
+          raise ArgumentError, "A altura precisa ser um valor numérico"
         end
       end
 
@@ -71,7 +71,7 @@ module Preflight
         when Numeric then Range.new(mm2pt(height)-1, mm2pt(height)+1)
         when Range   then Range.new(mm2pt(height.min), mm2pt(height.max))
         else
-          raise ArgumentError, "height must be a Numeric or Range object"
+          raise ArgumentError, "A altura precisa ser um valor numérico"
         end
       end
 
@@ -80,7 +80,7 @@ module Preflight
         when Numeric then Range.new(height, height)
         when Range   then height
         else
-          raise ArgumentError, "height must be a Numeric or Range object"
+          raise ArgumentError, "A altura precisa ser um valor numérico"
         end
       end
     end
