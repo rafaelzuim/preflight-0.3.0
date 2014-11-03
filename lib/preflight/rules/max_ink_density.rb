@@ -31,6 +31,10 @@ module Preflight
 
       attr_reader :issues
 
+      def initialize(max_ink)
+        @max_ink = max_ink.to_i
+      end
+
       # we're about to start a new page, reset state
       #
       def page=(page)
@@ -51,30 +55,12 @@ module Preflight
 
       def check_ink(c, m, y, k)
         ink = (c + m + y + k) * 100.0
-        cyan = c * 100.0
-        magenta = m * 100.0
-        yellow = y * 100.0
-        black = k * 100.0
-        average = ink / 4.0
-
-        #Valida Preto carregado
-        if 
-          (black >= 85.0 && average >= 70.0) 
-            @issues << Issue.new("A cor preta está carregada", self, 
-              :page    => @page.number,
-              :cyan    => c,
-              :magenta => m,
-              :yellow  => y,
-              :k      => k)
-        #Valida Azul carregado
-        elsif
-        (cyan >= 99.0 && magenta >= 99.0 && average <= 70.0) 
-            @issues << Issue.new("A cor azul está carregada", self, 
-              :page    => @page.number,
-              :cyan    => c,
-              :magenta => m,
-              :yellow  => y,
-              :k      => k)
+        if ink > @max_ink && @issues.empty?
+          @issues << Issue.new("Ink density too high", self, :page    => @page.number,
+                                                             :cyan    => c,
+                                                             :magenta => m,
+                                                             :yellow  => y,
+                                                             :k       => k)
         end
       end
     end

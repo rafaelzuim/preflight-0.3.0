@@ -1,5 +1,6 @@
 require 'preflight/rules/box_nesting'
 require 'preflight/rules/box_presence'
+require 'preflight/rules/color_validator'
 require 'preflight/rules/compression_algorithms'
 require 'preflight/rules/consistent_boxes'
 require 'preflight/rules/cropbox_matches_mediabox'
