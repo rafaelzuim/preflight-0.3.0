@@ -53,8 +53,17 @@ module Preflight
               :k      => k)
         #Valida Azul carregado
         elsif
-        (cyan >= 99.0 && magenta >= 99.0 && average <= 70.0) 
+        (cyan >= 99.0 && magenta >= 99.0 && average <= 50.0) 
             @issues << Issue.new("A cor azul está carregada", self, 
+              :page    => @page.number,
+              :cyan    => c,
+              :magenta => m,
+              :yellow  => y,
+              :k      => k)
+        #Valida o Laranja carregado
+        elsif
+        (magenta >= 60.0 && yellow >= 99.0 && average <= 40.0) 
+            @issues << Issue.new("A cor laranja está carregada", self, 
               :page    => @page.number,
               :cyan    => c,
               :magenta => m,
