@@ -6,18 +6,18 @@ require 'matrix'
 module Preflight
   module Rules
 
-    # * CLASSE REESCRITA PARA VALIDAÇÃO ESPECÍFICA DAS CORES
+    #
+    # * CLASSE DE VALIDAÇÃO ESPECÍFICA DAS CORES
     #
     # *Preto carregado (Preto K, misturado com todas as demais cores C, M e Y)
     # *Azul carregado (Azul com Cyan e Magenta igual ou superior a 99%)
+    # *Laranja carregado(Amarelo com Yellow igual ou superior a 99% e Magenta em 60%)
     #
     
     class ColorValidator
 
       attr_reader :issues
 
-      # we're about to start a new page, reset state
-      #
       def page=(page)
         @issues = []
         @page    = page
