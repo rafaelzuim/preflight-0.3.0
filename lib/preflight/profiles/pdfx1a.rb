@@ -20,7 +20,7 @@ module Preflight
       rule Preflight::Rules::PrintBoxes
       rule Preflight::Rules::OutputIntentForPdfx
       rule Preflight::Rules::PdfxOutputIntentHasKeys, :OutputConditionIdentifier, :Info
-      rule Preflight::Rules::MaxInkDensity, 250
+      rule Preflight::Rules::MaxInkDensity
       rule Preflight::Rules::NoRgb
 
     end

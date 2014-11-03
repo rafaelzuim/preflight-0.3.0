@@ -31,10 +31,6 @@ module Preflight
 
       attr_reader :issues
 
-      def initialize(max_ink)
-        @max_ink = max_ink.to_i
-      end
-
       # we're about to start a new page, reset state
       #
       def page=(page)
@@ -61,17 +57,24 @@ module Preflight
         black = k * 100.0
         average = ink / 4.0
 
+        #Valida Preto carregado
         if 
-          #Valida Preto carregado
-          (ink > @max_ink && @issues.empty? && average > 70.0 && black > 85.0) || 
-          #Valida Azul carregado
-          (ink > @max_ink && @issues.empty? && cyan == 100.0 && magenta == 100.0)
-          
-          @issues << Issue.new("PDF possui cores carregadas", self, :page    => @page.number,
-                                                             :cyan    => c,
-                                                             :magenta => m,
-                                                             :yellow  => y,
-                                                             :k       => k)
+          (black >= 85.0 && average >= 70.0) 
+            @issues << Issue.new("A cor preta está carregada", self, 
+              :page    => @page.number,
+              :cyan    => c,
+              :magenta => m,
+              :yellow  => y,
+               :k      => k)
+        #Valida Azul carregado
+        elsif
+        (cyan >= 99.0 && magenta >= 99.0 && average <= 70.0) 
+            @issues << Issue.new("A cor azul está carregada", self, 
+              :page    => @page.number,
+              :cyan    => c,
+              :magenta => m,
+              :yellow  => y,
+               :k      => k)
         end
       end
     end
