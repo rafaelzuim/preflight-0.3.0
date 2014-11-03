@@ -65,7 +65,7 @@ module Preflight
               :cyan    => c,
               :magenta => m,
               :yellow  => y,
-               :k      => k)
+              :k      => k)
         #Valida Azul carregado
         elsif
         (cyan >= 99.0 && magenta >= 99.0 && average <= 70.0) 
@@ -74,7 +74,7 @@ module Preflight
               :cyan    => c,
               :magenta => m,
               :yellow  => y,
-               :k      => k)
+              :k      => k)
         end
       end
     end
