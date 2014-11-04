@@ -47,7 +47,7 @@ module Preflight
           box_width  = dict[@box][2] - dict[@box][0]
 
           if !@width.include?(box_width)
-            @issues << Issue.new("O arquivo deve ter o comprimento de #{@orig_width}#{@units}", self, :page  => page.number,
+            @issues << Issue.new("O arquivo deve ter a largura de #{@orig_width}#{@units}", self, :page  => page.number,
                                                                                         :box   => @box,
                                                                                         :width => @orig_width,
                                                                                         :units => @units)
