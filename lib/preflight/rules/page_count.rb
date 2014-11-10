@@ -37,7 +37,7 @@ module Preflight
         when :even  then check_even(count)
         when :odd   then check_odd(count)
         else
-          [Issue.new("PageCount: invalid pattern", self)]
+          [Issue.new(1, "pdfview", "Padrão inválido de paginação", self)]
         end
       end
 
@@ -45,7 +45,7 @@ module Preflight
 
       def check_numeric(count)
         if count != @pattern
-          [Issue.new("Page count must equal #{@pattern}", self, :pattern => :invalid, :count => count)]
+          [Issue.new(1, "pdfview", "PDF deve ter somente #{@pattern} página(s)", self, :pattern => :invalid, :count => count)]
         else
           []
         end
@@ -53,7 +53,7 @@ module Preflight
 
       def check_range(count)
         if !@pattern.include?(count)
-          [Issue.new("Page count must be between #{@pattern.min} and #{@pattern.max}", self, :pattern => @pattern, :count => count)]
+          [Issue.new(1, "pdfview", "Arquivo deve ter entre #{@pattern.min} e #{@pattern.max} páginas", self, :pattern => @pattern, :count => count)]
         else
           []
         end
@@ -61,7 +61,7 @@ module Preflight
 
       def check_array(count)
         if !@pattern.include?(count)
-          [Issue.new("Page count must be one of #{@pattern.join(', ')}", self, :pattern => @pattern, :count => count)]
+          [Issue.new(1, "pdfview", "Contagem das páginas deve estar entre #{@pattern.join(', ')}", self, :pattern => @pattern, :count => count)]
         else
           []
         end
@@ -69,7 +69,7 @@ module Preflight
 
       def check_even(count)
         if count.odd?
-          [Issue.new("Page count must be an even number", self, :pattern => @pattern, :count => count)]
+          [Issue.new(1, "pdfview", "Paginação inválida", self, :pattern => @pattern, :count => count)]
         else
           []
         end
@@ -77,7 +77,7 @@ module Preflight
 
       def check_odd(count)
         if count.even?
-          [Issue.new("Page count must be an odd number", self, :pattern => @pattern, :count => count)]
+          [Issue.new(1, "pdfview", "Paginação inválida", self, :pattern => @pattern, :count => count)]
         else
           []
         end

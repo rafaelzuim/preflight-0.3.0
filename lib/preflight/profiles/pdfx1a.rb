@@ -20,6 +20,7 @@ module Preflight
       rule Preflight::Rules::OutputIntentForPdfx
       rule Preflight::Rules::PdfxOutputIntentHasKeys, :OutputConditionIdentifier, :Info
       rule Preflight::Rules::ColorValidator
+      rule Preflight::Rules::PageCount, 1
       rule Preflight::Rules::NoRgb
 
     end
