@@ -45,7 +45,7 @@ module Preflight
         #Valida Preto carregado
         if 
           (black >= 85.0 && average >= 70.0) 
-            @issues << Issue.new("A cor preta está carregada", self, 
+            @issues << Issue.new(1, "colorview", "A cor preta está carregada", self, 
               :page    => @page.number,
               :cyan    => c,
               :magenta => m,
@@ -54,7 +54,7 @@ module Preflight
         #Valida Azul carregado
         elsif
         (cyan >= 99.0 && magenta >= 99.0 && average <= 50.0) 
-            @issues << Issue.new("A cor azul está carregada", self, 
+            @issues << Issue.new(0, "colorview", "A cor azul está carregada", self, 
               :page    => @page.number,
               :cyan    => c,
               :magenta => m,
@@ -63,7 +63,7 @@ module Preflight
         #Valida o Laranja carregado
         elsif
         (magenta >= 60.0 && yellow >= 99.0 && average <= 40.0) 
-            @issues << Issue.new("A cor laranja está carregada", self, 
+            @issues << Issue.new(0, "colorview", "A cor laranja está carregada", self, 
               :page    => @page.number,
               :cyan    => c,
               :magenta => m,

@@ -18,7 +18,7 @@ module Preflight
 
       def check_hash(ohash)
         if ohash.trailer[:ID].nil?
-          [Issue.new("ID do arquivo inexistente", self)]
+          [Issue.new(1, "pdfview", "ID do arquivo inexistente", self)]
         else
           []
         end

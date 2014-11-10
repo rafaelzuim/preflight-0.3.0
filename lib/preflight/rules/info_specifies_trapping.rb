@@ -21,9 +21,9 @@ module Preflight
         info = ohash.object(ohash.trailer[:Info])
 
         if !info.has_key?(:Trapped)
-          [ Issue.new("Arquivo sem dicionário de dados PDF", self) ]
+          [ Issue.new(1, "pdfview", "Arquivo sem dicionário de dados PDF", self) ]
         elsif info[:Trapped] != :True && info[:Trapped] != :False
-          [ Issue.new("Arquivo sem dicionário de dados PDF", self) ]
+          [ Issue.new(1, "pdfview", "Arquivo sem dicionário de dados PDF", self) ]
         else
           []
         end

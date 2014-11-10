@@ -29,9 +29,9 @@ module Preflight
           @cleanStr =  info[key].gsub(/[\x00|\xFE|\xFF]/,'').to_s
 
           if !info.has_key?(key)
-            array << Issue.new("Arquivo precisa ser PDF-X1A", self, :key => key)
+            array << Issue.new(1, "pdfview", "Arquivo precisa ser PDF-X1A", self, :key => key)
           elsif !@cleanStr.match(regexp)
-            array << Issue.new("Arquivo precisa ser PDF-X1A", self, :key    => key,
+            array << Issue.new(1, "pdfview", "Arquivo precisa ser PDF-X1A", self, :key    => key,
                                                                                            :regexp => regexp,
                                                                                            :algo   => @cleanStr)
           end

@@ -60,7 +60,7 @@ module Preflight
         if stype == :Transparency
           bbox = xobject.hash[:BBox] || @page.attributes[:MediaBox]
           bbox = translate_to_device_space(bbox)
-          @issues << Issue.new("Arquivo com transparência:", self, :page         => @page.number,
+          @issues << Issue.new(1, "pdfview", "Arquivo com transparência:", self, :page         => @page.number,
                                                                   :top_left     => bbox[:tl],
                                                                   :bottom_left  => bbox[:bl],
                                                                   :bottom_right => bbox[:br],

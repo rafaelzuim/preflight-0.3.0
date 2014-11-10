@@ -86,7 +86,7 @@ module Preflight
         cs = @state.find_color_space(label)
 
         if plain_rgb?(cs) || indexed_rgb?(cs) || alternative_is_rgb?(cs)
-          @issues << Issue.new("Cor RGB encontrada", self, :page  => @page.number)
+          @issues << Issue.new(1, "colorview", "Cor RGB encontrada", self, :page  => @page.number)
         end
 
         @resource_labels_seen << label
@@ -95,12 +95,12 @@ module Preflight
       def check_xobject(xobject)
         cs = xobject.hash[:ColorSpace]
         if plain_rgb?(cs) || indexed_rgb?(cs) || alternative_is_rgb?(cs)
-          @issues << Issue.new("Cor RGB encontrada", self, :page  => @page.number)
+          @issues << Issue.new(1, "colorview", "Cor RGB encontrada", self, :page  => @page.number)
         end
       end
 
       def rgb_detected(r, g, b)
-        @issues << Issue.new("Cor RGB encontrada", self, :page  => @page.number,
+        @issues << Issue.new(1, "colorview", "Cor RGB encontrada", self, :page  => @page.number,
                                                          :red   => r,
                                                          :green => g,
                                                          :blue  => b)

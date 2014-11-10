@@ -23,7 +23,7 @@ module Preflight
         }
 
         if intents.size != 1
-          [Issue.new("Erro output GTS_PDFX", self)]
+          [Issue.new(1, "pdfview", "Erro output GTS_PDFX", self)]
         else
           []
         end

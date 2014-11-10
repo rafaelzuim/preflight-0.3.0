@@ -3,10 +3,14 @@
 module Preflight
   class Issue
 
-    attr_reader :description, :rule, :attributes
+    attr_reader :critical, :href, :description, :rule, :attributes
 
-    def initialize(description, rule, attributes = {})
+    def initialize(critical, href, description, rule, attributes = {})
+      #novos atributos para direcionamento de erros
+      @critical = critical
+      @href = href
       @description = description
+
       if rule.is_a?(Class)
         @rule = rule.to_s.to_sym
       else
@@ -15,6 +19,7 @@ module Preflight
       @attributes  = attributes || {}
 
       attach_attributes
+
     end
 
     def to_s

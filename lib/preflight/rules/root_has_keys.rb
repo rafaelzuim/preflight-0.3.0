@@ -26,7 +26,7 @@ module Preflight
         root = ohash.object(ohash.trailer[:Root])
         missing = @keys - root.keys
         missing.map { |key|
-          Issue.new("Arquivo sem dados de root", self, :key => key)
+          Issue.new(1, "pdfview", "Arquivo sem dados de root", self, :key => key)
         }
       end
     end

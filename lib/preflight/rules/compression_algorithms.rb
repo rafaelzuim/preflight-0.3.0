@@ -25,7 +25,7 @@ module Preflight
         algorithms = banned_algorithms(ohash)
 
         if algorithms.size > 0
-          [Issue.new("Arquivo possui codificação inválida", self, :algorithms => algorithms)]
+          [Issue.new(1, "pdfview", "Arquivo possui codificação inválida", self, :algorithms => algorithms)]
         else
           []
         end

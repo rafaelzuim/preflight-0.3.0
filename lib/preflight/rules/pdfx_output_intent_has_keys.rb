@@ -32,7 +32,7 @@ module Preflight
 
         missing = @keys - oi.keys
         missing.map { |key|
-          Issue.new("Arquivo sem informações GTS_PDFX", self, :key => key)
+          Issue.new(1, "pdfview", "Arquivo sem informações GTS_PDFX", self, :key => key)
         }
       end
 

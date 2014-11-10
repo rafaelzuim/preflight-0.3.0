@@ -25,7 +25,7 @@ module Preflight
         page.fonts.each { |key, obj|
           obj = page.objects.deref(obj)
           if !embedded?(page.objects, obj)
-            @issues << Issue.new("Fonte inválida", self, :base_font => obj[:BaseFont])
+            @issues << Issue.new(1, "fontview", "Fonte inválida", self, :base_font => obj[:BaseFont])
           end
         }
       end

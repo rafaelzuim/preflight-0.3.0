@@ -56,7 +56,7 @@ module Preflight
       def check_ink(c, m, y, k)
         ink = (c + m + y + k) * 100.0
         if ink > @max_ink && @issues.empty?
-          @issues << Issue.new("Ink density too high", self, :page    => @page.number,
+          @issues << Issue.new(1, "colorview", "Ink density too high", self, :page    => @page.number,
                                                              :cyan    => c,
                                                              :magenta => m,
                                                              :yellow  => y,
