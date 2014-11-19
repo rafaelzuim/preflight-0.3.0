@@ -47,7 +47,7 @@ module Preflight
           box_height  = dict[@box][3] - dict[@box][1]
 
           if !@height.include?(box_height)
-            @issues << Issue.new(0, "sizeview", "O arquivo deve ter a altura de #{@orig_height}#{@units}", self, :page   => page.number,
+            @issues << Issue.new(1, "sizeview", "O arquivo deve ter a altura de #{@orig_height}#{@units}", self, :page   => page.number,
                                                                                           :box    => @box,
                                                                                           :height => @orig_height,
                                                                                           :units  => @units)
