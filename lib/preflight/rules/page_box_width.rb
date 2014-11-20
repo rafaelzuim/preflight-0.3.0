@@ -28,7 +28,7 @@ module Preflight
 
       attr_reader :issues
 
-      def initialize(box, width, units)
+      def initialize(box, width, units, teste)
         @box, @units = box, units
         @orig_width = width
         @width = case units
@@ -68,7 +68,7 @@ module Preflight
 
       def mm_to_points(width)
         case width
-        when Numeric then Range.new(mm2pt(width)-0.5, mm2pt(width)+0.5)
+        when Numeric then Range.new(mm2pt(width)-0.1, mm2pt(width)+0.1)
         when Range   then Range.new(mm2pt(width.min), mm2pt(width.max))
         else
           raise ArgumentError, "O comprimento precisa ser um valor numérico"

@@ -27,10 +27,11 @@ module Preflight
 
       attr_reader :issues
 
-      def initialize(box, sizes)
+      def initialize(box, sizes, metrics)
         @box, @units = box
         sizes = [sizes] if sizes.kind_of?(Hash)
         @orig_sizes = sizes
+        @metrics = metrics
 
         @sizes = sizes.map do |size|
           size[:width]  = length_to_points(size[:width], size[:units])
@@ -53,7 +54,10 @@ module Preflight
           end
 
           if invalid_size
-            @issues << Issue.new("#{@box} size didn't match provided size",
+            puts YAML::dump(@orig_sizes)
+            box_width = pt2mm(box_width).round(2)
+            box_height = pt2mm(box_height).round(2)
+            @issues << Issue.new(1, "sizeview", "Tamanho esperado: #{@metrics} - Tamanho Encontrado: #{box_width} x #{box_height}",
               self,
               :page => page.number,
               :box => @box,
@@ -76,19 +80,19 @@ module Preflight
 
       def inches_to_points(height)
         case height
-        when Numeric then Range.new(in2pt(height)-1, in2pt(height)+1)
+        when Numeric then Range.new(in2pt(height)-0.1, in2pt(height)+0.1)
         when Range   then Range.new(in2pt(height.min), in2pt(height.max))
         else
-          raise ArgumentError, "height must be a Numeric or Range object"
+          raise ArgumentError, "O tamanho deve ser um valor numérico"
         end
       end
 
       def mm_to_points(height)
         case height
-        when Numeric then Range.new(mm2pt(height)-1, mm2pt(height)+1)
+        when Numeric then Range.new(mm2pt(height)-0.1, mm2pt(height)+0.1)
         when Range   then Range.new(mm2pt(height.min), mm2pt(height.max))
         else
-          raise ArgumentError, "height must be a Numeric or Range object"
+          raise ArgumentError, "O tamanho deve ser um valor numérico"
         end
       end
 
@@ -97,7 +101,7 @@ module Preflight
         when Numeric then Range.new(height, height)
         when Range   then height
         else
-          raise ArgumentError, "height must be a Numeric or Range object"
+          raise ArgumentError, "O tamanho deve ser um valor numérico"
         end
       end
 
