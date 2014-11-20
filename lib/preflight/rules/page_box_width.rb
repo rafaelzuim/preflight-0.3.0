@@ -28,7 +28,7 @@ module Preflight
 
       attr_reader :issues
 
-      def initialize(box, width, units, teste)
+      def initialize(box, width, units)
         @box, @units = box, units
         @orig_width = width
         @width = case units

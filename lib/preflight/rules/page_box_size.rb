@@ -54,7 +54,6 @@ module Preflight
           end
 
           if invalid_size
-            puts YAML::dump(@orig_sizes)
             box_width = pt2mm(box_width).round(2)
             box_height = pt2mm(box_height).round(2)
             @issues << Issue.new(1, "sizeview", "Tamanho esperado: #{@metrics} - Tamanho Encontrado: #{box_width} x #{box_height}",
