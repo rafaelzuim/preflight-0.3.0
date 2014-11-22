@@ -17,7 +17,10 @@ module Preflight
     # convert mm to standard PDF points
     #
     def mm2pt(mm)
-      return mm * (BigDecimal.new("72") / BigDecimal.new("25.4"))
+      normalize = mm * (BigDecimal.new("72") / BigDecimal.new("25.4"))
+      normalize = normalize.round(2)
+      normalize = (normalize * 10).floor / 10.0
+      return normalize
     end
 
     # convert mm to standard PDF points
@@ -35,7 +38,10 @@ module Preflight
     # convert standard PDF points to mm
     #
     def pt2mm(pt)
-      return pt / mm2pt(1)
+      mm = BigDecimal.new("72") / BigDecimal.new("25.4")
+      normalize = pt / mm
+      normalize = (normalize * 10).floor / 10.0
+      return normalize
     end
 
     # convert standard PDF points to cm

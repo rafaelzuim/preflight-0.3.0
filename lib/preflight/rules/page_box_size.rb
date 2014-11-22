@@ -54,14 +54,14 @@ module Preflight
           end
 
           if invalid_size
-            box_width = pt2mm(box_width).round(2)
-            box_height = pt2mm(box_height).round(2)
-            @issues << Issue.new(1, "sizeview", "Tamanho esperado: #{@metrics} - Tamanho Encontrado: #{box_width} x #{box_height}",
+            fileWidth = pt2mm(box_width)
+            fileHeight = pt2mm(box_height)
+            @issues << Issue.new(1, "sizeview", "Tamanho esperado: #{@metrics}<br/>Tamanho Encontrado: #{fileWidth}x#{fileHeight}",
               self,
               :page => page.number,
               :box => @box,
-              :box_height => box_height,
-              :box_width => box_width)
+              :box_width => box_width,
+              :box_height => box_height)
           end
         end
       end

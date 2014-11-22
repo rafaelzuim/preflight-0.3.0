@@ -44,7 +44,7 @@ module Preflight
 
         #Valida Preto carregado
         if 
-          (black >= 85.0 && average >= 70.0) 
+          (black >= 99.0 && average >= 99.0) 
             @issues << Issue.new(1, "colorview", "A cor preta está carregada", self, 
               :page    => @page.number,
               :cyan    => c,

@@ -15,9 +15,6 @@ module Preflight
       rule Preflight::Rules::OnlyEmbeddedFonts
       rule Preflight::Rules::NoTransparency
       rule Preflight::Rules::DocumentId
-      rule Preflight::Rules::NoFilespecs
-      rule Preflight::Rules::BoxNesting
-      rule Preflight::Rules::PrintBoxes
 
     end
   end
