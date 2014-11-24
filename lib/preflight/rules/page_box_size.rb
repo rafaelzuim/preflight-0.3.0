@@ -56,7 +56,7 @@ module Preflight
           if invalid_size
             fileWidth = pt2mm(box_width)
             fileHeight = pt2mm(box_height)
-            @issues << Issue.new(1, "sizeview", "Tamanho esperado: #{@metrics}<br/>Tamanho Encontrado: #{fileWidth}x#{fileHeight}",
+            @issues << Issue.new(0, "sizeview", "Tamanho esperado: #{@metrics}<br/>Tamanho Encontrado: #{fileWidth}x#{fileHeight}",
               self,
               :page => page.number,
               :box => @box,
