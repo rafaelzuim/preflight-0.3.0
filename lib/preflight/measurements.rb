@@ -49,5 +49,10 @@ module Preflight
     def pt2cm(pt)
       return pt / cm2pt(1)
     end
+
+    def mm2ptCrop(mm)
+      return mm * (BigDecimal.new("72") / BigDecimal.new("25.4"))
+    end
+    
   end
 end

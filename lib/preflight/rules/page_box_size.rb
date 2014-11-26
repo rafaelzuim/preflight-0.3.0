@@ -88,7 +88,7 @@ module Preflight
 
       def mm_to_points(height)
         case height
-        when Numeric then Range.new(mm2pt(height)-0.1, mm2pt(height)+0.1)
+        when Numeric then Range.new(mm2pt(height)-0.2, mm2pt(height)+0.2)
         when Range   then Range.new(mm2pt(height.min), mm2pt(height.max))
         else
           raise ArgumentError, "O tamanho deve ser um valor numérico"
