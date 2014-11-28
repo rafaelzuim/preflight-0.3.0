@@ -40,6 +40,7 @@ module Preflight
     def pt2mm(pt)
       mm = BigDecimal.new("72") / BigDecimal.new("25.4")
       normalize = pt / mm
+      normalize = normalize.round(2)
       normalize = (normalize * 10).floor / 10.0
       return normalize
     end
