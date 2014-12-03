@@ -6,8 +6,7 @@ module Preflight
       include Preflight::Profile
 
       profile_name "pdfx-1a"
-      rule Preflight::Rules::MatchInfoEntries, {:GTS_PDFXVersion => /\APDF\/X/, :GTS_PDFXConformance => /\APDF\/X-1a/}                                     
-      rule Preflight::Rules::CompressionAlgorithms, :ASCII85Decode, :CCITTFaxDecode, :DCTDecode, :FlateDecode, :RunLengthDecode
+      rule Preflight::Rules::MatchInfoEntries, {:GTS_PDFXVersion => /\APDF\/X/, :GTS_PDFXConformance => /\APDF\/X-1a/}
       rule Preflight::Rules::MaxVersion, 1.4
       rule Preflight::Rules::PageCount, 1
       rule Preflight::Rules::NoRgb
