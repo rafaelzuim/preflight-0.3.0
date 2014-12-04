@@ -42,7 +42,7 @@ module Preflight
         
         #Valida se o preto sobressai sobre as demais cores
         if 
-          (black < average || black < cyan || black < magenta || black < yellow)
+          (cyan > 0.0 || magenta > 0.0 || yellow > 0.0)
             @issues << Issue.new(1, "colorview", "A máscara deve ter somente a cor preta.", self, 
               :page    => @page.number,
               :cyan    => c,
