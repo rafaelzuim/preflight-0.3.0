@@ -82,7 +82,7 @@ module Preflight
         spot_name   = plain_separation_name(cs)
         spot_name ||= indexed_separation_name(cs)
         if spot_name
-          @issues << Issue.new("Separation color detected #{spot_name}", self, :page => @page.number,
+          @issues << Issue.new(1, "colorview", "Cor Pantone encontrada", self, :page => @page.number,
                                                                                :name => spot_name)
         end
 
@@ -94,8 +94,8 @@ module Preflight
         spot_name   = plain_separation_name(cs)
         spot_name ||= indexed_separation_name(cs)
         if spot_name
-          @issues << Issue.new("Separation image detected", self, :page  => @page.number,
-                                                                  :name  => spot_name)
+          @issues << Issue.new(1, "colorview","Cor Pantone encontrada", self, :page  => @page.number,
+                                                                              :name  => spot_name)
         end
       end
 

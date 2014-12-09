@@ -10,6 +10,7 @@ module Preflight
       rule Preflight::Rules::MaxVersion, 1.4
       rule Preflight::Rules::PageCount, 1
       rule Preflight::Rules::ColorValidator
+      rule Preflight::Rules::NoSeparation
       rule Preflight::Rules::NoRgb
       rule Preflight::Rules::OnlyEmbeddedFonts
       rule Preflight::Rules::NoTransparency
