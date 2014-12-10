@@ -81,9 +81,13 @@ module Preflight
         cs          = @state.find_color_space(label)
         spot_name   = plain_separation_name(cs)
         spot_name ||= indexed_separation_name(cs)
-        if spot_name
-          @issues << Issue.new(1, "colorview", "Cor Pantone encontrada", self, :page => @page.number,
+        begin
+          if spot_name['PANTONE']
+            @issues << Issue.new(1, "colorview", "Cor Pantone encontrada", self, :page => @page.number,
                                                                                :name => spot_name)
+          end
+        rescue
+          #errors none
         end
 
         @resource_labels_seen << label
@@ -93,9 +97,13 @@ module Preflight
         cs = xobject.hash[:ColorSpace]
         spot_name   = plain_separation_name(cs)
         spot_name ||= indexed_separation_name(cs)
-        if spot_name
-          @issues << Issue.new(1, "colorview","Cor Pantone encontrada", self, :page  => @page.number,
+        begin
+          if spot_name['PANTONE']
+            @issues << Issue.new(1, "colorview","Cor Pantone encontrada", self, :page  => @page.number,
                                                                               :name  => spot_name)
+          end
+        rescue
+          #errors none
         end
       end
 
