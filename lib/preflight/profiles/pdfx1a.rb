@@ -15,7 +15,6 @@ module Preflight
       rule Preflight::Rules::OnlyEmbeddedFonts
       rule Preflight::Rules::NoTransparency
       rule Preflight::Rules::DocumentId
-
     end
   end
 end
