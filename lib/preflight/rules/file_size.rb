@@ -20,7 +20,15 @@ module Preflight
       def page=(page)
         @issues = []
 
-        if (@sizeMm[0] > @largura || @sizeMm[1] > @altura)
+        if (@sizeMm[0] < @largura || @sizeMm[1] < @altura)
+            @issues << Issue.new(2, "sizeview", "Arquivo menor que o tamanho esperado",
+              self,
+              :page => 1,
+              :box => 'MediaBox',
+              :box_width => @sizeMm[0],
+              :box_height => @sizeMm[1])
+            
+        elsif (@sizeMm[0] > @largura || @sizeMm[1] > @altura)
             @issues << Issue.new(0, "sizeview", "Tamanho esperado: #{@largura}x#{@altura}<br/>Tamanho Encontrado: #{@sizeMm[0]}x#{@sizeMm[1]}",
               self,
               :page => 1,
@@ -28,13 +36,6 @@ module Preflight
               :box_width => @sizeMm[0],
               :box_height => @sizeMm[1])
 
-        elsif (@sizeMm[0] < @largura || @sizeMm[1] < @altura)
-            @issues << Issue.new(2, "sizeview", "Arquivo menor que o tamanho esperado",
-              self,
-              :page => 1,
-              :box => 'MediaBox',
-              :box_width => @sizeMm[0],
-              :box_height => @sizeMm[1])
           
         end
 
