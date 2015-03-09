@@ -11,9 +11,9 @@ module Preflight
       rule Preflight::Rules::PageCount, 1
       rule Preflight::Rules::ColorValidator
       rule Preflight::Rules::NoSeparation
+      rule Preflight::Rules::NoDevicen
       rule Preflight::Rules::NoRgb
       rule Preflight::Rules::OnlyEmbeddedFonts
-      rule Preflight::Rules::NoTransparency
       rule Preflight::Rules::DocumentId
     end
   end

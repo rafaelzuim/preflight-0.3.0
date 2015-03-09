@@ -41,7 +41,7 @@ module Preflight
         average = ink / 4.0
         
 #Valida se existe UMA única cor (somente preta)
-        if (cyan > 0.0 || magenta > 0.0 || yellow > 0.0)
+        if (c > 0.0 || m > 0.0 || y > 0.0)
             @issues << Issue.new(1, "colorview", "O verso do produto 4x1 deve ser somente preto.", self, 
               :page    => @page.number,
               :cyan    => c,

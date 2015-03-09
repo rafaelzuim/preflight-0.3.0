@@ -82,9 +82,10 @@ module Preflight
         cs           = @state.find_color_space(label)
         spot_names   = plain_devicen_names(cs)
         spot_names ||= indexed_devicen_names(cs)
+        puts spot_names
         if spot_names
-          @issues << Issue.new("DeviceN color detected", self, :page => @page.number,
-                                                               :names => spot_names)
+          @issues << Issue.new(1, "colorview", "Cor Pantone encontrada", self, :page => @page.number,
+                                                                                :names => spot_names)
         end
 
         @resource_labels_seen << label
@@ -94,9 +95,10 @@ module Preflight
         cs = xobject.hash[:ColorSpace]
         spot_names   = plain_devicen_names(cs)
         spot_names ||= indexed_devicen_names(cs)
+        puts spot_names
         if spot_names
-          @issues << Issue.new("DeviceN image detected", self, :page  => @page.number,
-                                                               :names => spot_names)
+          @issues << Issue.new(1, "colorview", "Cor Pantone encontrada", self, :page  => @page.number,
+                                                                                :names => spot_names)
         end
       end
 
